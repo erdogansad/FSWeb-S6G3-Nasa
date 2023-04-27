@@ -5,9 +5,10 @@ import "./Header.css";
 const Header = () => {
     return (
       <header>
-        <img className="logo" src={logo} alt="logo"/><span>APOD</span>
+        <div className="logo-section">
+        <img className="logo" src={logo} alt="logo"/><span className="logo-text">APOD</span>
+        </div>
         <nav>
-          <button>Ana Sayfa</button>
           <button>Bugün</button>
           <button>Tarih Seç</button>
           <button>Tarih Aralığı Seç</button>
