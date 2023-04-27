@@ -2,6 +2,7 @@
     height: auto;
     width: 100%;
     background-color: black;
+    font-family: 'Rubik', sans-serif;
 }
 
 .apod-container{
@@ -9,6 +10,11 @@
     height: 50rem;
     overflow: hidden;
 
+}
+
+.loading-text {
+    color: whitesmoke;
+    font-size: 1.5rem;
 }
 
 .apod-background{
@@ -29,18 +35,17 @@
 }
 
 .apod-image{
-    height: 95%;
+    max-height: 95%;
     width: auto;
+    max-width: 45%;
 }
 
 .apod-text {
     width: 45%;
-    margin-left: 10rem;
+    margin-left: 5rem;
     padding: 2rem;
     background-color: rgba(0, 0, 0, 0.692);
     color: whitesmoke;
-    font-family: 'Rubik', sans-serif;
-
 }
 
 .apod-title{
