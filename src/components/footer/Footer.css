@@ -1,0 +1,20 @@
+footer{
+    background-color: rgb(10, 10, 10);
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    color: whitesmoke;
+}
+
+footer span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Rubik', sans-serif;
+
+}
+
+footer span img{
+    padding-left: 0.5rem;
+    height: 20%;
+}
