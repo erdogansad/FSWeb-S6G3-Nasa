@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Navigate, Route, Routes } from "react-router-dom";
 
 import Header from "./layouts/Header";
 import Footer from "./layouts/Footer";
 
 import Home from "./pages/view/Home";
-import { Navigate, Route, Routes } from "react-router-dom";
+// import SelectDate from "./pages/view/SelectDate";
+// import SelectDateRange from "./pages/view/SelectDateRange";
 import NotFound from "./pages/error/NotFound";
 
 const expData = {
@@ -23,19 +25,20 @@ const expData = {
 const App = () => {
   const [data, setData] = useState(expData);
 
-  /* useEffect(() => {
-    let url = `${process.env.REACT_APP_API_URL}?api_key=${process.env.REACT_APP_API_KEY}` 
-    axios.get(url)
-    .then(resp => {
+  useEffect(() => {
+    let url = `${process.env.REACT_APP_API_URL}?api_key=${process.env.REACT_APP_API_KEY}`;
+    axios.get(url).then((resp) => {
       setData(resp.data);
-    })
-  }, []); */
+    });
+  }, []);
 
   return (
     <>
       <Header />
       <Routes>
         <Route exact path="/" element={<Home data={data} />} />
+        {/* <Route exact path="/tarih-sec" element={<SelectDate />} /> */}
+        {/* <Route exact path="/tarih-araligi-sec" element={<SelectDateRange />} /> */}
         <Route path="/404" element={<NotFound />} />
         <Route path="*" element={<Navigate to="/404" replaced={true} />} />
       </Routes>
