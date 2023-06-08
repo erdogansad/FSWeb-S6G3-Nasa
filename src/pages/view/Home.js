@@ -4,7 +4,7 @@ const Home = ({ data }) => {
   const [apodData, setApodData] = useState({});
 
   useEffect(() => {
-    if ((data !== undefined) & data.date.includes("-")) {
+    if (data !== undefined && data.date.includes("-")) {
       data.date = data.date.split("-");
       data.date = `(${data.date[2]}.${data.date[1]}.${data.date[0]})`;
       setTimeout(() => {
