@@ -2,8 +2,9 @@ import React from "react";
 
 const NotFound = () => {
   return (
-    <section className="bg-stone-900 h-[88vh] flex justify-center items-center">
-      <h2 className="font-rubik font-bold text-5xl text-stone-300">404: Sayfa bulunamadı.</h2>
+    <section className="bg-stone-900 h-full flex flex-col gap-4 justify-center items-center">
+      <h1 className="font-inter font-bold text-7xl text-stone-300">404</h1>
+      <h2 className="font-inter font-bold text-5xl text-stone-300">Sayfa bulunamadı</h2>
     </section>
   );
 };

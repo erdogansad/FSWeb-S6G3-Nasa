@@ -1,15 +1,18 @@
 import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useSearchParams } from "react-router-dom";
 import { fetchApod } from "../../redux/slices/apodSlice";
 
-const Home = () => {
+const SelectDate = () => {
   const dispatch = useDispatch();
+  const [searchParams] = useSearchParams();
   const { single, isLoading, error } = useSelector((state) => state.apod);
 
   useEffect(() => {
-    dispatch(fetchApod());
-  }, [dispatch]);
+    if (searchParams.has("date")) {
+      dispatch(fetchApod(searchParams.get("date")));
+    }
+  }, [searchParams, dispatch]);
 
   if (isLoading) {
     return (
@@ -19,7 +22,7 @@ const Home = () => {
     );
   }
 
-  if (error) {
+  if (error || !single || Object.keys(single).length === 0) {
     return (
       <section className="bg-stone-900 h-full flex justify-center items-center">
         <h2 className="text-stone-300 font-semibold text-2xl">{error}</h2>
@@ -33,11 +36,12 @@ const Home = () => {
         <img
           className="absolute object-center object-cover h-full w-full blur-md brightness-50 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
           src={single.hdurl}
-          alt=""
+          loading="lazy"
+          alt={single.title}
         />
         <div className="relative h-full container flex flex-col xl:flex-row items-center gap-y-10 xl:gap-y-0 xl:gap-x-12 py-8">
           <div className="lg:basis-1/2">
-            <img className="w-full h-full rounded-xl" src={single.url} alt={single.title} />
+            <img className="w-full h-full rounded-xl" src={single.url} loading="lazy" alt={single.title} />
           </div>
           <div className="lg:basis-1/2 bg-stone-900/90 p-10 rounded-xl">
             <h2 className="font-bold text-xl md:text-2xl lg:text-4xl text-stone-300">{single.title}</h2>
@@ -52,4 +56,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default SelectDate;
