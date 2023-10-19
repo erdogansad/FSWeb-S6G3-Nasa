@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import logo from "../assets/img/logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import Datepicker from "tailwind-datepicker-react";
 
@@ -51,7 +50,7 @@ const Header = () => {
     <header className="bg-stone-900 z-10 font-inter">
       <div className="container flex flex-col gap-y-4 lg:gap-y-0 lg:flex-row items-center justify-between py-8">
         <Link to="/" className="h-full flex flex-col gap-y-4 items-center lg:flex-row lg:gap-y-0 lg:gap-x-2 cursor-pointer">
-          <img className="h-8 lg:h-12" src={logo} alt="logo" />
+          <img className="h-8 lg:h-12" src="https://mystatic-bay.vercel.app/img/nasa/logo.png" alt="logo" />
           <span className="text-stone-300 font-semibold">APOD</span>
         </Link>
         <nav className="relative flex flex-col items-center lg:flex-row gap-y-5 lg:gap-y-0 lg:gap-x-10 text-stone-300  font-semibold lg:text-xl">
