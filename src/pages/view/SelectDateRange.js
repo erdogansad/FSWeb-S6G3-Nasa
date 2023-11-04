@@ -46,7 +46,7 @@ const SelectDateRange = () => {
               className="flex basis-1/6 flex-col gap-3 bg-stone-700 p-3 rounded-xl cursor-pointer hover:bg-stone-800"
             >
               <div className="rounded-lg overflow-hidden">
-                <img className="object-cover aspect-square" src={item.url || item.hdurl} alt={item.title} />
+                <img className="object-cover aspect-square" src={item.url || item.hdurl} alt={item.title} loading="lazy" />
               </div>
               <div className="flex flex-col gap-2 text-center">
                 <span className="text-stone-50 text-lg">{item.title}</span>

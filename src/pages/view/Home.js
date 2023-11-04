@@ -33,11 +33,12 @@ const Home = () => {
         <img
           className="absolute object-center object-cover h-full w-full blur-md brightness-50 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
           src={single.hdurl}
+          loading="lazy"
           alt=""
         />
         <div className="relative h-full container flex flex-col xl:flex-row items-center gap-y-10 xl:gap-y-0 xl:gap-x-12 py-8">
           <div className="lg:basis-1/2">
-            <img className="w-full h-full rounded-xl" src={single.url} alt={single.title} />
+            <img className="w-full h-full rounded-xl" src={single.url} alt={single.title} loading="lazy" />
           </div>
           <div className="lg:basis-1/2 bg-stone-900/90 p-10 rounded-xl">
             <h2 className="font-bold text-xl md:text-2xl lg:text-4xl text-stone-300">{single.title}</h2>
