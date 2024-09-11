@@ -22,7 +22,7 @@ const SelectDateRange = () => {
   }, [searchParams, dispatch, redirect]);
 
   const handleSingle = (date) => {
-    return redirect("/tarih-sec?date=" + date);
+    return redirect("/date-single?date=" + date);
   };
 
   if (Math.abs(new Date(searchParams.get("end_date")) - new Date(searchParams.get("start_date"))) > 86400000 * 31) {

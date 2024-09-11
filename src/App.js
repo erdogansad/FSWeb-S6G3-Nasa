@@ -15,8 +15,8 @@ const App = () => {
       <div className="grow">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/tarih-sec" element={<SelectDate />} />
-          <Route path="/tarih-araligi-sec" element={<SelectDateRange />} />
+          <Route path="/date-single" element={<SelectDate />} />
+          <Route path="/date-range" element={<SelectDateRange />} />
           <Route path="/404" element={<Error />} />
           <Route path="*" element={<Navigate to="/404" replaced />} />
         </Routes>

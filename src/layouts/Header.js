@@ -35,7 +35,7 @@ const Header = () => {
     const val = value || new Date();
     const date = val.getFullYear() + "-" + (val.getMonth() + 1) + "-" + val.getDate();
     setShowSelectModal(false);
-    return redirect("/tarih-sec?date=" + date);
+    return redirect("/date-single?date=" + date);
   };
 
   const handleDateRange = () => {
@@ -44,7 +44,7 @@ const Header = () => {
     const startDate = start.getFullYear() + "-" + start.getMonth() + "-" + start.getDate();
     const endDate = end.getFullYear() + "-" + end.getMonth() + "-" + end.getDate();
     setShowSelectRangeModal(false);
-    return redirect("/tarih-araligi-sec?start_date=" + startDate + "&end_date=" + endDate);
+    return redirect("/date-range?start_date=" + startDate + "&end_date=" + endDate);
   };
 
   return (
@@ -56,7 +56,7 @@ const Header = () => {
         </Link>
         <nav className="relative flex flex-col items-center lg:flex-row gap-y-5 lg:gap-y-0 lg:gap-x-10 text-stone-300  font-semibold lg:text-xl">
           <Link to="/" className="hover:text-punch hover:underline hover:underline-offset-4 hover:decoration-punch hover:decoration-2">
-            Bugün
+            Today
           </Link>
           <button
             onClick={() => {
@@ -65,7 +65,7 @@ const Header = () => {
             }}
             className="hover:text-punch hover:underline hover:underline-offset-4 hover:decoration-punch hover:decoration-2"
           >
-            Rastgele
+            Random Date
           </button>
           <div>
             <button
@@ -75,7 +75,7 @@ const Header = () => {
               }}
               className="hover:text-punch hover:underline hover:underline-offset-4 hover:decoration-punch hover:decoration-2 font-semibold"
             >
-              Tarih Seç
+              Select Date
             </button>
             <div
               className={`${
@@ -88,8 +88,7 @@ const Header = () => {
                   maxDate: new Date(),
                   todayBtn: true,
                   clearBtn: true,
-                  clearBtnText: "Temizle",
-                  todayBtnText: "Bugün",
+
                   theme: {
                     background: "bg-stone-800 dark:bg-stone-800",
                     todayBtn: "bg-punch/80 hover:bg-punch/50 dark:bg-punch/80 dark:hover:bg-punch/50",
@@ -102,14 +101,11 @@ const Header = () => {
                     selected: "bg-punch/80 dark:bg-punch/80 hover:bg-punch/50 dark:hover:bg-punch/50",
                   },
                   datepickerClassNames: "top-16",
-                  language: "tr",
-                  weekDays: ["Pzt", "Sal", "Çrş", "Prş", "Cum", "Cmt", "Paz"],
                   inputNameProp: "date",
                   inputIdProp: "date",
-                  inputPlaceholderProp: "Tarih seç",
                   inputDateFormatProp: {
                     day: "numeric",
-                    month: "long",
+                    month: "numeric",
                     year: "numeric",
                   },
                 }}
@@ -118,7 +114,7 @@ const Header = () => {
                 setShow={setShowSelectDate}
               />
               <button onClick={() => handleDate()} className="text-stone-50 py-2 bg-punch rounded-lg hover:bg-punch/50">
-                Ara
+                Search
               </button>
             </div>
           </div>
@@ -130,7 +126,7 @@ const Header = () => {
               }}
               className="hover:text-punch hover:underline hover:underline-offset-4 hover:decoration-punch hover:decoration-2 font-semibold"
             >
-              Tarih Aralığı Seç
+              Select Date Range
             </button>
             <div
               className={`${
@@ -140,13 +136,10 @@ const Header = () => {
               <div className="flex flex-col lg:flex-row gap-5">
                 <Datepicker
                   options={{
-                    title: "Başlangıç Tarihi",
                     minDate: new Date("1995-06-16"),
                     maxDate: new Date(range?.end_date || ""),
                     todayBtn: true,
                     clearBtn: true,
-                    clearBtnText: "Temizle",
-                    todayBtnText: "Bugün",
                     theme: {
                       background: "bg-stone-800 dark:bg-stone-800",
                       todayBtn: "bg-punch/80 hover:bg-punch/50 dark:bg-punch/80 dark:hover:bg-punch/50",
@@ -159,14 +152,11 @@ const Header = () => {
                       selected: "bg-punch/80 dark:bg-punch/80 hover:bg-punch/50 dark:hover:bg-punch/50",
                     },
                     datepickerClassNames: "top-16",
-                    language: "tr",
-                    weekDays: ["Pzt", "Sal", "Çrş", "Prş", "Cum", "Cmt", "Paz"],
                     inputNameProp: "start_date",
                     inputIdProp: "start_date",
-                    inputPlaceholderProp: "Tarih seç",
                     inputDateFormatProp: {
                       day: "numeric",
-                      month: "long",
+                      month: "numeric",
                       year: "numeric",
                     },
                   }}
@@ -176,12 +166,9 @@ const Header = () => {
                 />
                 <Datepicker
                   options={{
-                    title: "Bitiş Tarihi",
                     maxDate: new Date(),
                     todayBtn: true,
                     clearBtn: true,
-                    clearBtnText: "Temizle",
-                    todayBtnText: "Bugün",
                     theme: {
                       background: "bg-stone-800 dark:bg-stone-800",
                       todayBtn: "bg-punch/80 hover:bg-punch/50 dark:bg-punch/80 dark:hover:bg-punch/50",
@@ -194,14 +181,11 @@ const Header = () => {
                       selected: "bg-punch/80 dark:bg-punch/80 hover:bg-punch/50 dark:hover:bg-punch/50",
                     },
                     datepickerClassNames: "top-16",
-                    language: "tr",
-                    weekDays: ["Pzt", "Sal", "Çrş", "Prş", "Cum", "Cmt", "Paz"],
                     inputNameProp: "end_date",
                     inputIdProp: "end_date",
-                    inputPlaceholderProp: "Tarih seç",
                     inputDateFormatProp: {
                       day: "numeric",
-                      month: "long",
+                      month: "numeric",
                       year: "numeric",
                     },
                   }}
@@ -216,7 +200,7 @@ const Header = () => {
                 disabled={submitDisabled}
                 className="text-stone-50 py-2 bg-punch rounded-lg hover:bg-punch/50 disabled:bg-punch/20 disabled:cursor-not-allowed"
               >
-                Ara
+                Search
               </button>
             </div>
           </div>
