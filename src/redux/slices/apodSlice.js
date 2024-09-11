@@ -5,7 +5,10 @@ let initialState = {
   single: {},
   list: [],
   isLoading: false,
-  error: "",
+  error: {
+    status: "",
+    message: "",
+  },
 };
 
 export const fetchApod = createAsyncThunk("apod/fetchApod", async (dates, { rejectWithValue }) => {
@@ -31,7 +34,10 @@ export const fetchApod = createAsyncThunk("apod/fetchApod", async (dates, { reje
       }
     }
   } catch (error) {
-    return rejectWithValue(error.response.data.msg);
+    return rejectWithValue({
+      status: error.status,
+      message: error.response.data.msg,
+    });
   }
 });
 
@@ -50,11 +56,17 @@ const apodSlice = createSlice({
       } else {
         state.single = action.payload;
       }
-      state.error = "";
+      state.error = {
+        status: "",
+        message: "",
+      };
     });
     builder.addCase(fetchApod.rejected, (state, action) => {
       state.isLoading = false;
-      state.error = action.payload;
+      state.error = {
+        status: action.payload.status,
+        message: action.payload.message,
+      };
     });
   },
 });
