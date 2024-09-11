@@ -24,15 +24,16 @@ const Header = () => {
   }, [range]);
 
   function generateRandomDate(from, to) {
-    const timeDiff = to.getTime() - from.getTime();
-    const randomTime = Math.random() * timeDiff;
-    const randomDate = new Date(from.getTime() + randomTime);
+    let timeDiff = to.getTime() - from.getTime(),
+      randomTime = Math.random() * timeDiff,
+      randomDate = new Date(from.getTime() + randomTime);
+
     return randomDate;
   }
 
   const handleDate = () => {
     const val = value || new Date();
-    const date = val.getFullYear() + "-" + val.getMonth() + "-" + val.getDate();
+    const date = val.getFullYear() + "-" + (val.getMonth() + 1) + "-" + val.getDate();
     setShowSelectModal(false);
     return redirect("/tarih-sec?date=" + date);
   };
@@ -83,6 +84,7 @@ const Header = () => {
             >
               <Datepicker
                 options={{
+                  minDate: new Date("1995-06-16"),
                   maxDate: new Date(),
                   todayBtn: true,
                   clearBtn: true,
