@@ -1,25 +1,24 @@
-import React from "react";
+import React, { lazy } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 
-import Header from "./layouts/Header";
-import Footer from "./layouts/Footer";
-import Home from "./pages/view/Home";
-import SelectDate from "./pages/view/SelectDate";
-// import SelectDateRange from "./pages/view/SelectDateRange";
-import NotFound from "./pages/error/NotFound";
-import SelectDateRange from "./pages/view/SelectDateRange";
+const Home = lazy(() => import("@pages/Home"));
+const SelectDate = lazy(() => import("@pages/SelectDate"));
+const SelectDateRange = lazy(() => import("@pages/SelectDateRange"));
+const Error = lazy(() => import("@pages/Error"));
+const Header = lazy(() => import("@layouts/Header"));
+const Footer = lazy(() => import("@layouts/Footer"));
 
 const App = () => {
   return (
-    <div className="min-h-screen h-1 flex flex-col">
+    <div className="h-screen flex flex-col">
       <Header />
       <div className="grow">
         <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route exact path="/tarih-sec" element={<SelectDate />} />
-          <Route exact path="/tarih-araligi-sec" element={<SelectDateRange />} />
-          <Route path="/404" element={<NotFound />} />
-          <Route path="*" element={<Navigate to="/404" replaced={true} />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/tarih-sec" element={<SelectDate />} />
+          <Route path="/tarih-araligi-sec" element={<SelectDateRange />} />
+          <Route path="/404" element={<Error />} />
+          <Route path="*" element={<Navigate to="/404" replaced />} />
         </Routes>
       </div>
       <Footer />

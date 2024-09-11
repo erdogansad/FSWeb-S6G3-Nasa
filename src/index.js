@@ -1,10 +1,11 @@
-import React from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
-import App from "./App";
-import { setupStore } from "./redux/store";
 import { Provider } from "react-redux";
-import "./assets/css/index.css";
+import { setupStore } from "@redux/store";
+import App from "./App";
+import LoadingSpinner from "@components/LoadingSpinner";
+import "@assets/css/index.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const store = setupStore();
@@ -12,9 +13,11 @@ const store = setupStore();
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <Suspense fallback={<LoadingSpinner />}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </Suspense>
     </Provider>
   </React.StrictMode>
 );
