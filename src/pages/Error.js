@@ -5,7 +5,7 @@ const NotFound = ({ error }) => {
   const location = useLocation();
   const [text, setText] = React.useState({
     title: "404",
-    subtitle: "Sayfa bulunamadı",
+    subtitle: "Not Found",
   });
 
   React.useEffect(() => {
@@ -26,7 +26,7 @@ const NotFound = ({ error }) => {
     return () => {
       setText({
         title: "404",
-        subtitle: "Sayfa bulunamadı",
+        subtitle: "Not Found",
       });
     };
   }, [error, location]);
